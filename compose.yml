@@ -1,0 +1,382 @@
+x-notification-template: &notif-template
+  image: damou/library-app-notification:bf39d588bcb62e0c29bdea2be343a3170bb39079
+  depends_on:
+    notification-db:
+      condition: service_healthy
+    Kafka:
+      condition: service_healthy
+  env_file:
+    - ./telemetry.env
+    - ./notification/.env
+  volumes:
+    - ./notification/.env:/var/www/html/.env
+
+services:
+
+  frontend:
+    image: damou/library-app-front:latest
+    ports:
+      - "3002:80"
+    healthcheck:
+      test: [ "CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  comments:
+    image: damou/library-app-comments:${AUTH_TAG:-8a4f76ff891a4ac085ade46a7c7eae4d23f1f3b8}
+    healthcheck:
+      test: [ "CMD", "node", "-e", "require('http').get('http://localhost:3000/metrics', (res) => { if (res.statusCode === 200) process.exit(0); else process.exit(1); }).on('error', () => process.exit(1))" ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    volumes:
+      - ./comment/.env:/app/.env
+      - ./comment/keys/public_key.pem:/app/keys
+    depends_on:
+      - comments-db
+
+  comments-db:
+    image: mongo:latest
+    hostname: mongodb
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "27019:27017"
+
+  membercard:
+    image: damou/library-app-membercard:${AUTH_TAG:-173a3edcebd34c6a9b8aa20dad2a75985905391c}
+    ports:
+      - "8084:8083"
+    env_file:
+      - ./telemetry.env
+      - ./membercard/.env
+    depends_on:
+      Kafka:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8083/actuator/health/readiness" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  membercard-db:
+    image: postgres:alpine
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./membercard/.env
+    ports:
+      - "5437:5432"
+
+  borrow:
+    image: damou/library-app-borrow:${AUTH_TAG:-62413973bf778a848f7fdfb0eb4d3c67a7844e80}
+    volumes:
+      - ./borrow/keys/public_key.pem:/etc/keys/public_key.pem
+    env_file:
+      - ./telemetry.env
+      - ./borrow/.env
+    depends_on:
+      Kafka:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8083/api/borrow/actuator/health/readiness" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  borrow-db:
+    image: postgres:alpine
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./borrow/.env
+    ports:
+      - "5436:5432"
+
+  catalogue:
+    image: damou/library-app-catalogue:${AUTH_TAG:-02ed2b4f50053a70b20adae54d83c585994ff54b}
+    env_file:
+      - ./catalogue/.env
+      - ./telemetry.env
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8083/api/catalogue/actuator/health/readiness" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  catalogue-db:
+    image: postgres:alpine
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./catalogue/.env
+    ports:
+      - "5438:5432"
+
+
+  inventory:
+    image: damou/library-app-inventory:${AUTH_TAG:-e1a6c51bd2a803d6e52badec137c632791057381}
+    env_file:
+      - ./telemetry.env
+      - ./inventory/.env
+    depends_on:
+      Kafka:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8083/api/inventory/actuator/health/readiness" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  inventory-db:
+    image: postgres:alpine
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./inventory/.env
+    ports:
+      - "5439:5432"
+
+  auth:
+    image: damou/library-app-auth:${AUTH_TAG:-cff872e01b8ec28e8aa071d320b1d75fd063b489}
+    depends_on:
+      Kafka:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:80/up" ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    env_file:
+      - ./telemetry.env
+      - ./auth/.env
+    volumes:
+      - ./auth/.env:/var/www/html/.env
+      - ./auth/keys/:/var/www/html/keys
+
+  auth-cache:
+    image: redis:alpine
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  auth-db:
+    image: mongo:latest
+    hostname: mongodb
+    healthcheck:
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "27018:27017"
+
+  analytics:
+    image: damou/library-app-analytics:${AUTH_TAG:-1e96012abccdd3a255ade7cb8bdd665d5983a227}
+    env_file:
+      - ./telemetry.env
+      - ./analytics/.env
+    depends_on:
+      Kafka:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8083/api/analytics/actuator/health/readiness" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  analytics-db:
+    image: postgres:alpine
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./analytics/.env
+    ports:
+      - "5440:5432"
+
+  records:
+    image: damou/library-app-records:${AUTH_TAG:-90c0abd4b19ef6b7746203d9655e04499addd4b2}
+    volumes:
+      - ./records/keys/public_key.pem:/etc/keys/public_key.pem
+    env_file:
+      - ./telemetry.env
+      - ./records/.env
+    depends_on:
+      Kafka:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8083/actuator/health/readiness" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  records-db:
+    image: postgres:alpine
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./records/.env
+    ports:
+      - "5431:5432"
+
+  worker-users:
+    <<: *notif-template
+    command: php artisan kafka:consume-users
+    environment:
+      - KAFKA_CONSUMER_GROUP_ID=notification-user-group
+    healthcheck:
+      test: [ "CMD", "pgrep", "-f", "php artisan kafka:consume-users" ]
+
+  worker-borrow:
+    <<: *notif-template
+    command: php artisan kafka:consume-borrow
+    environment:
+      - KAFKA_CONSUMER_GROUP_ID=notification-borrow-group
+    healthcheck:
+      test: [ "CMD", "pgrep", "-f", "php artisan kafka:consume-borrow" ]
+
+  worker-return:
+    <<: *notif-template
+    command: php artisan kafka:consume-return
+    environment:
+      - KAFKA_CONSUMER_GROUP_ID=notification-return-group
+    healthcheck:
+      test: [ "CMD", "pgrep", "-f", "php artisan kafka:consume-return" ]
+
+
+  notification-db:
+    image: postgres:alpine
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - ./notification/.env
+    ports:
+      - "5433:5432"
+
+  grafana:
+    image: grafana/grafana-oss
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      - "16686:16686"
+      - "4317:4317"
+      - "4318:4318"
+
+  mailpit:
+    image: 'axllent/mailpit'
+    container_name: mailpit
+    ports:
+      - '1025:1025'
+      - '8025:8025'
+
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    ports:
+      - "9092:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+
+  api-gateway:
+    image: openresty/openresty:alpine-fat
+    depends_on:
+      auth:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: ./lua/Dockerfile
+    container_name: library-gateway
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./lua:/usr/local/openresty/nginx/lua:ro
+      - ./lua/authorize.lua:/usr/local/openresty/nginx/lua/authorize.lua:ro
+      - ./comment/keys/public_key.pem:/usr/local/openresty/nginx/keys/public.pem:ro
+
+  Kafka:
+    image: confluentinc/cp-kafka:7.8.5
+    container_name: kafka
+    ports:
+      - "29092:29092"
+    environment:
+      KAFKA_KRAFT_MODE: 'true'
+
+      CLUSTER_ID: '1L6g7nGhU-eAKfL--X25wo'
+      KAFKA_NODE_ID: 1
+
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+
+      KAFKA_LISTENERS: INTERNAL://0.0.0.0:9092,EXTERNAL://0.0.0.0:29092,CONTROLLER://0.0.0.0:9093
+
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://localhost:29092
+
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+
+      KAFKA_LOG_DIR: /var/lib/kafka/data
+
+    healthcheck:
+      test: [ "CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+    volumes:
+      - kafka_kraft:/var/lib/kafka/data
+
+volumes:
+  kafka_kraft:
