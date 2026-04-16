@@ -412,7 +412,7 @@ processing and asynchronous event propagation.
 
 このトレースは、貸出リクエストがシステム全体をどのように流れるか（同期処理および非同期イベント伝播）を示しています。
 
-![jaeger-trace-borrow](docs/images/jaeger-trace-borrow.png.png)
+![jaeger-trace-borrow](docs/images/jaeger-trace-borrow.png)
 
 ---
 
