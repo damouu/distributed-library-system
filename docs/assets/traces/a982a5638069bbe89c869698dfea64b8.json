@@ -1,0 +1,4393 @@
+{
+    "data": [
+        {
+            "traceID": "a982a5638069bbe89c869698dfea64b8",
+            "spans": [
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "6bf6edd9ca7ceeed",
+                    "operationName": "BorrowRepository.existsByMemberCardUuid",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "ac54e67a289b9e84"
+                        }
+                    ],
+                    "startTime": 1776311876669380,
+                    "duration": 30708,
+                    "tags": [
+                        {
+                            "key": "code.function",
+                            "type": "string",
+                            "value": "existsByMemberCardUuid"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "com.example.demo.repository.BorrowRepository"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-data-1.8"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "b35d8f7097ea35f8",
+                    "operationName": "BorrowRepository.checkLatestBorrowDate",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "ac54e67a289b9e84"
+                        }
+                    ],
+                    "startTime": 1776311876700206,
+                    "duration": 3840,
+                    "tags": [
+                        {
+                            "key": "code.function",
+                            "type": "string",
+                            "value": "checkLatestBorrowDate"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "com.example.demo.repository.BorrowRepository"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-data-1.8"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "97ab3703b42a3a54",
+                    "operationName": "INSERT records.record",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "595f8e416ea49ab4"
+                        }
+                    ],
+                    "startTime": 1776311877230790,
+                    "duration": 3076,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://records-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "records"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "record"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into record (books, borrow_end_date, borrow_return_date, borrow_start_date, borrow_uuid, chapters, days_late, late_fee, member_card_uuid, return_lately, id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "records-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 53
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "bf97dc93d216e79f",
+                    "operationName": "Transaction.commit",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "ac54e67a289b9e84"
+                        }
+                    ],
+                    "startTime": 1776311876984347,
+                    "duration": 24124,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "122875c69018afe1",
+                    "operationName": "INSERT analytics.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "515cc013bc287acf"
+                        }
+                    ],
+                    "startTime": 1776311877299128,
+                    "duration": 468,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into borrow (borrow_date, chapter_cover_url, chapter_number, chapter_second_title, chapter_title, chapter_uuid, id) values (?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "d9cfe9434d035d0e",
+                    "operationName": "kafka_consume_user",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "22e116b8f95370f9"
+                        }
+                    ],
+                    "startTime": 1776311877175222,
+                    "duration": 264113,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "notification-service"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "user.member_card_uuid",
+                            "type": "string",
+                            "value": "e1a50923-9e9a-41f3-86f4-75b7d95079a4"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p4",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "00ceab4f19ec4383",
+                    "operationName": "library.borrow.v1 process",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "22e116b8f95370f9"
+                        }
+                    ],
+                    "startTime": 1776311877140120,
+                    "duration": 60203,
+                    "tags": [
+                        {
+                            "key": "messaging.client_id",
+                            "type": "string",
+                            "value": "consumer-inventory-group-1"
+                        },
+                        {
+                            "key": "messaging.destination.name",
+                            "type": "string",
+                            "value": "library.borrow.v1"
+                        },
+                        {
+                            "key": "messaging.destination.partition.id",
+                            "type": "string",
+                            "value": "0"
+                        },
+                        {
+                            "key": "messaging.kafka.consumer.group",
+                            "type": "string",
+                            "value": "inventory-group"
+                        },
+                        {
+                            "key": "messaging.kafka.message.key",
+                            "type": "string",
+                            "value": "c4a29da8-1b3c-40b3-b279-03e1584900b3"
+                        },
+                        {
+                            "key": "messaging.kafka.message.offset",
+                            "type": "int64",
+                            "value": 113
+                        },
+                        {
+                            "key": "messaging.message.body.size",
+                            "type": "int64",
+                            "value": 1525
+                        },
+                        {
+                            "key": "messaging.operation",
+                            "type": "string",
+                            "value": "process"
+                        },
+                        {
+                            "key": "messaging.system",
+                            "type": "string",
+                            "value": "kafka"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-kafka-2.7"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "consumer"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p5",
+                    "warnings": [
+                        "clock skew adjustment disabled; not applying calculated delta of -234.011715ms"
+                    ]
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "907d3f5c2f9cef4c",
+                    "operationName": "library.borrow.v1 process",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "22e116b8f95370f9"
+                        }
+                    ],
+                    "startTime": 1776311877174632,
+                    "duration": 133013,
+                    "tags": [
+                        {
+                            "key": "messaging.client_id",
+                            "type": "string",
+                            "value": "consumer-analytics-group-1"
+                        },
+                        {
+                            "key": "messaging.destination.name",
+                            "type": "string",
+                            "value": "library.borrow.v1"
+                        },
+                        {
+                            "key": "messaging.destination.partition.id",
+                            "type": "string",
+                            "value": "0"
+                        },
+                        {
+                            "key": "messaging.kafka.consumer.group",
+                            "type": "string",
+                            "value": "analytics-group"
+                        },
+                        {
+                            "key": "messaging.kafka.message.key",
+                            "type": "string",
+                            "value": "c4a29da8-1b3c-40b3-b279-03e1584900b3"
+                        },
+                        {
+                            "key": "messaging.kafka.message.offset",
+                            "type": "int64",
+                            "value": 113
+                        },
+                        {
+                            "key": "messaging.message.body.size",
+                            "type": "int64",
+                            "value": 1525
+                        },
+                        {
+                            "key": "messaging.operation",
+                            "type": "string",
+                            "value": "process"
+                        },
+                        {
+                            "key": "messaging.system",
+                            "type": "string",
+                            "value": "kafka"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-kafka-2.7"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "consumer"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": [
+                        "clock skew adjustment disabled; not applying calculated delta of -304.928126ms"
+                    ]
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "bf9bcc0b2fb89faa",
+                    "operationName": "inventory",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "00ceab4f19ec4383"
+                        }
+                    ],
+                    "startTime": 1776311877161152,
+                    "duration": 556,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://inventory-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "inventory"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": ""
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "inventory-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p5",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "8cbf1cbb82abde38",
+                    "operationName": "analytics",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "19c271b493fcbe56"
+                        }
+                    ],
+                    "startTime": 1776311877202039,
+                    "duration": 521,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": ""
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "22e116b8f95370f9",
+                    "operationName": "library.borrow.v1 publish",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "ac54e67a289b9e84"
+                        }
+                    ],
+                    "startTime": 1776311876860598,
+                    "duration": 151224,
+                    "tags": [
+                        {
+                            "key": "messaging.client_id",
+                            "type": "string",
+                            "value": "producer-1"
+                        },
+                        {
+                            "key": "messaging.destination.name",
+                            "type": "string",
+                            "value": "library.borrow.v1"
+                        },
+                        {
+                            "key": "messaging.destination.partition.id",
+                            "type": "string",
+                            "value": "0"
+                        },
+                        {
+                            "key": "messaging.kafka.message.key",
+                            "type": "string",
+                            "value": "c4a29da8-1b3c-40b3-b279-03e1584900b3"
+                        },
+                        {
+                            "key": "messaging.kafka.message.offset",
+                            "type": "int64",
+                            "value": 113
+                        },
+                        {
+                            "key": "messaging.operation",
+                            "type": "string",
+                            "value": "publish"
+                        },
+                        {
+                            "key": "messaging.system",
+                            "type": "string",
+                            "value": "kafka"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.kafka-clients-0.11"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "producer"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "2cce110b171078a4",
+                    "operationName": "UPDATE records.record",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "595f8e416ea49ab4"
+                        }
+                    ],
+                    "startTime": 1776311877237452,
+                    "duration": 1237,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://records-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "records"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "UPDATE"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "record"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "update record set books=?, borrow_end_date=?, borrow_return_date=?, borrow_start_date=?, chapters=?, days_late=?, late_fee=?, return_lately=? where id=?"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "records-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 53
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "d8f1911816525d3b",
+                    "operationName": "SELECT borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "cb79dd9055ab946a"
+                        }
+                    ],
+                    "startTime": 1776311876701714,
+                    "duration": 1536,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "SELECT (CURRENT_DATE = latest_borrow_date) AS is_current_date_latest FROM (SELECT borrow_start_date AS latest_borrow_date FROM borrow WHERE member_card_uuid = ? AND borrow_return_date is not null ORDER BY borrow_start_date desc LIMIT ?) AS latest_borrow"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "cbda1a3b10bdb840",
+                    "operationName": "SELECT analytics",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "a1781d136a02b412"
+                        }
+                    ],
+                    "startTime": 1776311877223384,
+                    "duration": 3774,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "b0ae3d4f89eb554a",
+                    "operationName": "library.borrow.v1 process",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "22e116b8f95370f9"
+                        }
+                    ],
+                    "startTime": 1776311877113043,
+                    "duration": 139678,
+                    "tags": [
+                        {
+                            "key": "messaging.client_id",
+                            "type": "string",
+                            "value": "consumer-records-group-1"
+                        },
+                        {
+                            "key": "messaging.destination.name",
+                            "type": "string",
+                            "value": "library.borrow.v1"
+                        },
+                        {
+                            "key": "messaging.destination.partition.id",
+                            "type": "string",
+                            "value": "0"
+                        },
+                        {
+                            "key": "messaging.kafka.consumer.group",
+                            "type": "string",
+                            "value": "records-group"
+                        },
+                        {
+                            "key": "messaging.kafka.message.key",
+                            "type": "string",
+                            "value": "c4a29da8-1b3c-40b3-b279-03e1584900b3"
+                        },
+                        {
+                            "key": "messaging.kafka.message.offset",
+                            "type": "int64",
+                            "value": 113
+                        },
+                        {
+                            "key": "messaging.message.body.size",
+                            "type": "int64",
+                            "value": 1525
+                        },
+                        {
+                            "key": "messaging.operation",
+                            "type": "string",
+                            "value": "process"
+                        },
+                        {
+                            "key": "messaging.system",
+                            "type": "string",
+                            "value": "kafka"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-kafka-2.7"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "consumer"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 53
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": [
+                        "clock skew adjustment disabled; not applying calculated delta of -246.671344ms"
+                    ]
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "e98e50b891d57ca4",
+                    "operationName": "Session.persist com.example.demo.model.Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "19c271b493fcbe56"
+                        }
+                    ],
+                    "startTime": 1776311877268413,
+                    "duration": 1290,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "914c075941a22e6e",
+                    "operationName": "BorrowRepository.saveAll",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "ac54e67a289b9e84"
+                        }
+                    ],
+                    "startTime": 1776311876707336,
+                    "duration": 40932,
+                    "tags": [
+                        {
+                            "key": "code.function",
+                            "type": "string",
+                            "value": "saveAll"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "com.example.demo.repository.BorrowRepository"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-data-1.8"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "b7d6aaca4fdceb06",
+                    "operationName": "send_borrow_email",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "d9cfe9434d035d0e"
+                        }
+                    ],
+                    "startTime": 1776311877320067,
+                    "duration": 108538,
+                    "tags": [
+                        {
+                            "key": "mail.recipient",
+                            "type": "string",
+                            "value": "ugur@gmail.com"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "notification-service"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p4",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "553cb20f44b0ee38",
+                    "operationName": "SELECT Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "6bf6edd9ca7ceeed"
+                        }
+                    ],
+                    "startTime": 1776311876697382,
+                    "duration": 2256,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "a76081d7622aa806",
+                    "operationName": "SELECT borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "f3d0d9b824e895ee"
+                        }
+                    ],
+                    "startTime": 1776311876718895,
+                    "duration": 1683,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "f3d0d9b824e895ee",
+                    "operationName": "Session.persist com.example.demo.model.Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "914c075941a22e6e"
+                        }
+                    ],
+                    "startTime": 1776311876715237,
+                    "duration": 29443,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "92c39ba4c3a2fe71",
+                    "operationName": "SELECT borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "ea9a13a942d691f2"
+                        }
+                    ],
+                    "startTime": 1776311876747195,
+                    "duration": 259,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "bccc0595deffd7ad",
+                    "operationName": "INSERT borrow.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "bf97dc93d216e79f"
+                        }
+                    ],
+                    "startTime": 1776311876998125,
+                    "duration": 1938,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into borrow (book_uuid, borrow_end_date, borrow_return_date, borrow_start_date, borrow_uuid, chapter_uuid, member_card_uuid, id) values (?, ?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "c8595ace67c3c7b4",
+                    "operationName": "SELECT",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "739d7a78efc7ba9d"
+                        }
+                    ],
+                    "startTime": 1776311876636719,
+                    "duration": 28490,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "cb79dd9055ab946a",
+                    "operationName": "SELECT",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "b35d8f7097ea35f8"
+                        }
+                    ],
+                    "startTime": 1776311876701070,
+                    "duration": 2344,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "1a7c6979cf2d9105",
+                    "operationName": "UPDATE inventory.book",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "f9c081e6f83cab02"
+                        }
+                    ],
+                    "startTime": 1776311877184940,
+                    "duration": 4530,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://inventory-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "inventory"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "UPDATE"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "book"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "update book set currently_borrowed=? where book_uuid in (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "inventory-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p5",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "d1f05a1b777ee256",
+                    "operationName": "Transaction.commit",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "00ceab4f19ec4383"
+                        }
+                    ],
+                    "startTime": 1776311877192725,
+                    "duration": 5840,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p5",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "e9231964cb53a341",
+                    "operationName": "Session.persist com.example.demo.model.Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "19c271b493fcbe56"
+                        }
+                    ],
+                    "startTime": 1776311877271051,
+                    "duration": 974,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "f9c081e6f83cab02",
+                    "operationName": "UPDATE Book",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "fbc5f2961b8cb538"
+                        }
+                    ],
+                    "startTime": 1776311877178512,
+                    "duration": 13104,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p5",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "4a0a90862c57dcfc",
+                    "operationName": "SELECT analytics",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "e9231964cb53a341"
+                        }
+                    ],
+                    "startTime": 1776311877271343,
+                    "duration": 392,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "515cc013bc287acf",
+                    "operationName": "Transaction.commit",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "19c271b493fcbe56"
+                        }
+                    ],
+                    "startTime": 1776311877273276,
+                    "duration": 33784,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "739d7a78efc7ba9d",
+                    "operationName": "BorrowRepository.getBookMemberCardByBook",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "ac54e67a289b9e84"
+                        }
+                    ],
+                    "startTime": 1776311876613186,
+                    "duration": 56053,
+                    "tags": [
+                        {
+                            "key": "code.function",
+                            "type": "string",
+                            "value": "getBookMemberCardByBook"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "com.example.demo.repository.BorrowRepository"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-data-1.8"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "a7316d008a9a8b32",
+                    "operationName": "Session.persist com.example.demo.model.Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "914c075941a22e6e"
+                        }
+                    ],
+                    "startTime": 1776311876745968,
+                    "duration": 828,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "5ca4347b345ef5e7",
+                    "operationName": "SELECT records",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "82a7664b152e9f4c"
+                        }
+                    ],
+                    "startTime": 1776311877166291,
+                    "duration": 3221,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://records-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "records"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "records-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 53
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "bbd075c4e14ae62a",
+                    "operationName": "database_fetch_user",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "d9cfe9434d035d0e"
+                        }
+                    ],
+                    "startTime": 1776311877176158,
+                    "duration": 94064,
+                    "tags": [
+                        {
+                            "key": "db.user_id",
+                            "type": "int64",
+                            "value": 1
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "notification-service"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p4",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "06e5d615c0ed742a",
+                    "operationName": "INSERT analytics.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "515cc013bc287acf"
+                        }
+                    ],
+                    "startTime": 1776311877301398,
+                    "duration": 516,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into borrow (borrow_date, chapter_cover_url, chapter_number, chapter_second_title, chapter_title, chapter_uuid, id) values (?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "19c271b493fcbe56",
+                    "operationName": "BorrowRepository.saveAll",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "907d3f5c2f9cef4c"
+                        }
+                    ],
+                    "startTime": 1776311877187537,
+                    "duration": 120001,
+                    "tags": [
+                        {
+                            "key": "code.function",
+                            "type": "string",
+                            "value": "saveAll"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "com.example.demo.repository.BorrowRepository"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-data-1.8"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "f4a967260491c102",
+                    "operationName": "SELECT borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "c8595ace67c3c7b4"
+                        }
+                    ],
+                    "startTime": 1776311876653600,
+                    "duration": 4076,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "SELECT EXISTS (select ? FROM borrow b WHERE b.member_card_uuid = ? and b.borrow_return_date is null ) AS has_borrows"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "7ea6df1a0f38089d",
+                    "operationName": "SELECT borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "a7316d008a9a8b32"
+                        }
+                    ],
+                    "startTime": 1776311876746238,
+                    "duration": 363,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "a1781d136a02b412",
+                    "operationName": "Session.persist com.example.demo.model.Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "19c271b493fcbe56"
+                        }
+                    ],
+                    "startTime": 1776311877216306,
+                    "duration": 51784,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "dd942e7b8bc6639d",
+                    "operationName": "INSERT borrow.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "bf97dc93d216e79f"
+                        }
+                    ],
+                    "startTime": 1776311877003347,
+                    "duration": 351,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into borrow (book_uuid, borrow_end_date, borrow_return_date, borrow_start_date, borrow_uuid, chapter_uuid, member_card_uuid, id) values (?, ?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "595f8e416ea49ab4",
+                    "operationName": "Transaction.commit",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "b0ae3d4f89eb554a"
+                        }
+                    ],
+                    "startTime": 1776311877198485,
+                    "duration": 53859,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 53
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "5f31b392ebc2696a",
+                    "operationName": "SELECT analytics",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "cdea0ca8aa8cd9e8"
+                        }
+                    ],
+                    "startTime": 1776311877270173,
+                    "duration": 424,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "ac54e67a289b9e84",
+                    "operationName": "POST /api/borrow/books",
+                    "references": [],
+                    "startTime": 1776311876473824,
+                    "duration": 543044,
+                    "tags": [
+                        {
+                            "key": "client.address",
+                            "type": "string",
+                            "value": "172.20.0.1"
+                        },
+                        {
+                            "key": "http.request.method",
+                            "type": "string",
+                            "value": "POST"
+                        },
+                        {
+                            "key": "http.response.status_code",
+                            "type": "int64",
+                            "value": 201
+                        },
+                        {
+                            "key": "http.route",
+                            "type": "string",
+                            "value": "/api/borrow/books"
+                        },
+                        {
+                            "key": "network.peer.address",
+                            "type": "string",
+                            "value": "172.20.0.29"
+                        },
+                        {
+                            "key": "network.peer.port",
+                            "type": "int64",
+                            "value": 36278
+                        },
+                        {
+                            "key": "network.protocol.version",
+                            "type": "string",
+                            "value": "1.0"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.tomcat-7.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "localhost"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "server"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        },
+                        {
+                            "key": "url.path",
+                            "type": "string",
+                            "value": "/api/borrow/books"
+                        },
+                        {
+                            "key": "url.scheme",
+                            "type": "string",
+                            "value": "http"
+                        },
+                        {
+                            "key": "user_agent.original",
+                            "type": "string",
+                            "value": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "01b31cf2d6e3f9a7",
+                    "operationName": "borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "ac54e67a289b9e84"
+                        }
+                    ],
+                    "startTime": 1776311876605766,
+                    "duration": 442,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": ""
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "d3de445c089a4992",
+                    "operationName": "BorrowRepository.save",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "b0ae3d4f89eb554a"
+                        }
+                    ],
+                    "startTime": 1776311877140584,
+                    "duration": 57317,
+                    "tags": [
+                        {
+                            "key": "code.function",
+                            "type": "string",
+                            "value": "save"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "com.example.demo.repository.BorrowRepository"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-data-1.8"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 53
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "7c84e1327aa80f3a",
+                    "operationName": "SELECT borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "3c0f18cc4baf3263"
+                        }
+                    ],
+                    "startTime": 1776311876745195,
+                    "duration": 378,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "ea9a13a942d691f2",
+                    "operationName": "Session.persist com.example.demo.model.Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "914c075941a22e6e"
+                        }
+                    ],
+                    "startTime": 1776311876746933,
+                    "duration": 697,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "ab31be72cd269cc8",
+                    "operationName": "SELECT analytics",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "e98e50b891d57ca4"
+                        }
+                    ],
+                    "startTime": 1776311877268795,
+                    "duration": 593,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select nextval (?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "e8edf82d52e6a08b",
+                    "operationName": "INSERT borrow.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "bf97dc93d216e79f"
+                        }
+                    ],
+                    "startTime": 1776311877001599,
+                    "duration": 414,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into borrow (book_uuid, borrow_end_date, borrow_return_date, borrow_start_date, borrow_uuid, chapter_uuid, member_card_uuid, id) values (?, ?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "3c0f18cc4baf3263",
+                    "operationName": "Session.persist com.example.demo.model.Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "914c075941a22e6e"
+                        }
+                    ],
+                    "startTime": 1776311876744879,
+                    "duration": 946,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "04ad660c6b7a04d2",
+                    "operationName": "INSERT borrow.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "bf97dc93d216e79f"
+                        }
+                    ],
+                    "startTime": 1776311877002494,
+                    "duration": 415,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into borrow (book_uuid, borrow_end_date, borrow_return_date, borrow_start_date, borrow_uuid, chapter_uuid, member_card_uuid, id) values (?, ?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "d292f6001d87ec1f",
+                    "operationName": "SELECT borrow.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "553cb20f44b0ee38"
+                        }
+                    ],
+                    "startTime": 1776311876697868,
+                    "duration": 718,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://borrow-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "SELECT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "select borrow0_.id as col_0_0_ from borrow borrow0_ where borrow0_.member_card_uuid=? limit ?"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "borrow-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 57
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "http-nio-8083-exec-5"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "fbc5f2961b8cb538",
+                    "operationName": "BookRepository.updateBorrowedStatusInBatch",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "00ceab4f19ec4383"
+                        }
+                    ],
+                    "startTime": 1776311877164819,
+                    "duration": 27595,
+                    "tags": [
+                        {
+                            "key": "code.function",
+                            "type": "string",
+                            "value": "updateBorrowedStatusInBatch"
+                        },
+                        {
+                            "key": "code.namespace",
+                            "type": "string",
+                            "value": "com.example.demo.repository.BookRepository"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.spring-data-1.8"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p5",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "2e6db3183baccddb",
+                    "operationName": "INSERT analytics.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "515cc013bc287acf"
+                        }
+                    ],
+                    "startTime": 1776311877295530,
+                    "duration": 971,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into borrow (borrow_date, chapter_cover_url, chapter_number, chapter_second_title, chapter_title, chapter_uuid, id) values (?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "82a7664b152e9f4c",
+                    "operationName": "Session.persist com.example.demo.model.Record",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "d3de445c089a4992"
+                        }
+                    ],
+                    "startTime": 1776311877160199,
+                    "duration": 37137,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 53
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "cdea0ca8aa8cd9e8",
+                    "operationName": "Session.persist com.example.demo.model.Borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "19c271b493fcbe56"
+                        }
+                    ],
+                    "startTime": 1776311877269867,
+                    "duration": 995,
+                    "tags": [
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.hibernate-4.0"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "internal"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "a982a5638069bbe89c869698dfea64b8",
+                    "spanID": "4fe97fb2835d2368",
+                    "operationName": "INSERT analytics.borrow",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "a982a5638069bbe89c869698dfea64b8",
+                            "spanID": "515cc013bc287acf"
+                        }
+                    ],
+                    "startTime": 1776311877300202,
+                    "duration": 522,
+                    "tags": [
+                        {
+                            "key": "db.connection_string",
+                            "type": "string",
+                            "value": "postgresql://analytics-db:5432"
+                        },
+                        {
+                            "key": "db.name",
+                            "type": "string",
+                            "value": "analytics"
+                        },
+                        {
+                            "key": "db.operation",
+                            "type": "string",
+                            "value": "INSERT"
+                        },
+                        {
+                            "key": "db.sql.table",
+                            "type": "string",
+                            "value": "borrow"
+                        },
+                        {
+                            "key": "db.statement",
+                            "type": "string",
+                            "value": "insert into borrow (borrow_date, chapter_cover_url, chapter_number, chapter_second_title, chapter_title, chapter_uuid, id) values (?, ?, ?, ?, ?, ?, ?)"
+                        },
+                        {
+                            "key": "db.system",
+                            "type": "string",
+                            "value": "postgresql"
+                        },
+                        {
+                            "key": "db.user",
+                            "type": "string",
+                            "value": "postgres"
+                        },
+                        {
+                            "key": "otel.scope.name",
+                            "type": "string",
+                            "value": "io.opentelemetry.jdbc"
+                        },
+                        {
+                            "key": "otel.scope.version",
+                            "type": "string",
+                            "value": "2.24.0-alpha"
+                        },
+                        {
+                            "key": "server.address",
+                            "type": "string",
+                            "value": "analytics-db"
+                        },
+                        {
+                            "key": "server.port",
+                            "type": "int64",
+                            "value": 5432
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "thread.id",
+                            "type": "int64",
+                            "value": 52
+                        },
+                        {
+                            "key": "thread.name",
+                            "type": "string",
+                            "value": "org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p3",
+                    "warnings": null
+                }
+            ],
+            "processes": {
+                "p1": {
+                    "serviceName": "borrow",
+                    "tags": [
+                        {
+                            "key": "container.id",
+                            "type": "string",
+                            "value": "3828e71cbebbf6600e2c7eb6fbbda61d06e588ed1c7ff1050ffc7cbf704e04e5"
+                        },
+                        {
+                            "key": "host.arch",
+                            "type": "string",
+                            "value": "amd64"
+                        },
+                        {
+                            "key": "host.name",
+                            "type": "string",
+                            "value": "3828e71cbebb"
+                        },
+                        {
+                            "key": "os.description",
+                            "type": "string",
+                            "value": "Linux 6.8.0-110-generic"
+                        },
+                        {
+                            "key": "os.type",
+                            "type": "string",
+                            "value": "linux"
+                        },
+                        {
+                            "key": "process.command_args",
+                            "type": "string",
+                            "value": "[\"/opt/java/openjdk/bin/java\",\"-jar\",\"app.jar\"]"
+                        },
+                        {
+                            "key": "process.executable.path",
+                            "type": "string",
+                            "value": "/opt/java/openjdk/bin/java"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "int64",
+                            "value": 1
+                        },
+                        {
+                            "key": "process.runtime.description",
+                            "type": "string",
+                            "value": "Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.9+10-LTS"
+                        },
+                        {
+                            "key": "process.runtime.name",
+                            "type": "string",
+                            "value": "OpenJDK Runtime Environment"
+                        },
+                        {
+                            "key": "process.runtime.version",
+                            "type": "string",
+                            "value": "21.0.9+10-LTS"
+                        },
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "ae782b12-ac4e-4b9d-86e2-4fc23264ba1d"
+                        },
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "2.0.0-SNAPSHOT"
+                        },
+                        {
+                            "key": "telemetry.distro.name",
+                            "type": "string",
+                            "value": "opentelemetry-java-instrumentation"
+                        },
+                        {
+                            "key": "telemetry.distro.version",
+                            "type": "string",
+                            "value": "2.24.0"
+                        },
+                        {
+                            "key": "telemetry.sdk.language",
+                            "type": "string",
+                            "value": "java"
+                        },
+                        {
+                            "key": "telemetry.sdk.name",
+                            "type": "string",
+                            "value": "opentelemetry"
+                        },
+                        {
+                            "key": "telemetry.sdk.version",
+                            "type": "string",
+                            "value": "1.58.0"
+                        }
+                    ]
+                },
+                "p2": {
+                    "serviceName": "records",
+                    "tags": [
+                        {
+                            "key": "container.id",
+                            "type": "string",
+                            "value": "08fa3f8f2e48cb2ae6cf06c5acf15b2c061148e1a9d9726d1cf6cb543038d066"
+                        },
+                        {
+                            "key": "host.arch",
+                            "type": "string",
+                            "value": "amd64"
+                        },
+                        {
+                            "key": "host.name",
+                            "type": "string",
+                            "value": "08fa3f8f2e48"
+                        },
+                        {
+                            "key": "os.description",
+                            "type": "string",
+                            "value": "Linux 6.8.0-110-generic"
+                        },
+                        {
+                            "key": "os.type",
+                            "type": "string",
+                            "value": "linux"
+                        },
+                        {
+                            "key": "process.command_args",
+                            "type": "string",
+                            "value": "[\"/opt/java/openjdk/bin/java\",\"-jar\",\"app.jar\"]"
+                        },
+                        {
+                            "key": "process.executable.path",
+                            "type": "string",
+                            "value": "/opt/java/openjdk/bin/java"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "int64",
+                            "value": 1
+                        },
+                        {
+                            "key": "process.runtime.description",
+                            "type": "string",
+                            "value": "Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.10+7-LTS"
+                        },
+                        {
+                            "key": "process.runtime.name",
+                            "type": "string",
+                            "value": "OpenJDK Runtime Environment"
+                        },
+                        {
+                            "key": "process.runtime.version",
+                            "type": "string",
+                            "value": "21.0.10+7-LTS"
+                        },
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "2bcbeb8e-a532-4e5e-bddc-26c712fa5039"
+                        },
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "2.0.0-SNAPSHOT"
+                        },
+                        {
+                            "key": "telemetry.distro.name",
+                            "type": "string",
+                            "value": "opentelemetry-java-instrumentation"
+                        },
+                        {
+                            "key": "telemetry.distro.version",
+                            "type": "string",
+                            "value": "2.24.0"
+                        },
+                        {
+                            "key": "telemetry.sdk.language",
+                            "type": "string",
+                            "value": "java"
+                        },
+                        {
+                            "key": "telemetry.sdk.name",
+                            "type": "string",
+                            "value": "opentelemetry"
+                        },
+                        {
+                            "key": "telemetry.sdk.version",
+                            "type": "string",
+                            "value": "1.58.0"
+                        }
+                    ]
+                },
+                "p3": {
+                    "serviceName": "analytics",
+                    "tags": [
+                        {
+                            "key": "container.id",
+                            "type": "string",
+                            "value": "981e7c5a85480202ef471ab199b2ae74ac4c06b79fc36d68456a1db5d3348089"
+                        },
+                        {
+                            "key": "host.arch",
+                            "type": "string",
+                            "value": "amd64"
+                        },
+                        {
+                            "key": "host.name",
+                            "type": "string",
+                            "value": "981e7c5a8548"
+                        },
+                        {
+                            "key": "os.description",
+                            "type": "string",
+                            "value": "Linux 6.8.0-110-generic"
+                        },
+                        {
+                            "key": "os.type",
+                            "type": "string",
+                            "value": "linux"
+                        },
+                        {
+                            "key": "process.command_args",
+                            "type": "string",
+                            "value": "[\"/opt/java/openjdk/bin/java\",\"-jar\",\"app.jar\"]"
+                        },
+                        {
+                            "key": "process.executable.path",
+                            "type": "string",
+                            "value": "/opt/java/openjdk/bin/java"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "int64",
+                            "value": 1
+                        },
+                        {
+                            "key": "process.runtime.description",
+                            "type": "string",
+                            "value": "Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.9+10-LTS"
+                        },
+                        {
+                            "key": "process.runtime.name",
+                            "type": "string",
+                            "value": "OpenJDK Runtime Environment"
+                        },
+                        {
+                            "key": "process.runtime.version",
+                            "type": "string",
+                            "value": "21.0.9+10-LTS"
+                        },
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "f3cfa62d-63cb-4803-ade2-450f9a74829c"
+                        },
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "2.0.0-SNAPSHOT"
+                        },
+                        {
+                            "key": "telemetry.distro.name",
+                            "type": "string",
+                            "value": "opentelemetry-java-instrumentation"
+                        },
+                        {
+                            "key": "telemetry.distro.version",
+                            "type": "string",
+                            "value": "2.24.0"
+                        },
+                        {
+                            "key": "telemetry.sdk.language",
+                            "type": "string",
+                            "value": "java"
+                        },
+                        {
+                            "key": "telemetry.sdk.name",
+                            "type": "string",
+                            "value": "opentelemetry"
+                        },
+                        {
+                            "key": "telemetry.sdk.version",
+                            "type": "string",
+                            "value": "1.58.0"
+                        }
+                    ]
+                },
+                "p4": {
+                    "serviceName": "notification",
+                    "tags": [
+                        {
+                            "key": "host.arch",
+                            "type": "string",
+                            "value": "x86_64"
+                        },
+                        {
+                            "key": "host.name",
+                            "type": "string",
+                            "value": "670ec6b8ede4"
+                        },
+                        {
+                            "key": "os.description",
+                            "type": "string",
+                            "value": "6.8.0-110-generic"
+                        },
+                        {
+                            "key": "os.name",
+                            "type": "string",
+                            "value": "Linux"
+                        },
+                        {
+                            "key": "os.type",
+                            "type": "string",
+                            "value": "linux"
+                        },
+                        {
+                            "key": "os.version",
+                            "type": "string",
+                            "value": "#110-Ubuntu SMP PREEMPT_DYNAMIC Thu Mar 19 15:09:20 UTC 2026"
+                        },
+                        {
+                            "key": "process.command",
+                            "type": "string",
+                            "value": "artisan"
+                        },
+                        {
+                            "key": "process.command_args",
+                            "type": "string",
+                            "value": "[\"artisan\",\"kafka:consume-borrow\"]"
+                        },
+                        {
+                            "key": "process.executable.path",
+                            "type": "string",
+                            "value": "/usr/local/bin/php"
+                        },
+                        {
+                            "key": "process.owner",
+                            "type": "string",
+                            "value": "root"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "int64",
+                            "value": 1
+                        },
+                        {
+                            "key": "process.runtime.name",
+                            "type": "string",
+                            "value": "cli"
+                        },
+                        {
+                            "key": "process.runtime.version",
+                            "type": "string",
+                            "value": "8.4.17"
+                        },
+                        {
+                            "key": "telemetry.distro.name",
+                            "type": "string",
+                            "value": "opentelemetry-php-instrumentation"
+                        },
+                        {
+                            "key": "telemetry.distro.version",
+                            "type": "string",
+                            "value": "1.2.1"
+                        },
+                        {
+                            "key": "telemetry.sdk.language",
+                            "type": "string",
+                            "value": "php"
+                        },
+                        {
+                            "key": "telemetry.sdk.name",
+                            "type": "string",
+                            "value": "opentelemetry"
+                        },
+                        {
+                            "key": "telemetry.sdk.version",
+                            "type": "string",
+                            "value": "1.12.0"
+                        }
+                    ]
+                },
+                "p5": {
+                    "serviceName": "inventory",
+                    "tags": [
+                        {
+                            "key": "container.id",
+                            "type": "string",
+                            "value": "4474d7685a64c52ddce7f0d859c399f320b77f3604a9322269b72993f941cd18"
+                        },
+                        {
+                            "key": "host.arch",
+                            "type": "string",
+                            "value": "amd64"
+                        },
+                        {
+                            "key": "host.name",
+                            "type": "string",
+                            "value": "4474d7685a64"
+                        },
+                        {
+                            "key": "os.description",
+                            "type": "string",
+                            "value": "Linux 6.8.0-110-generic"
+                        },
+                        {
+                            "key": "os.type",
+                            "type": "string",
+                            "value": "linux"
+                        },
+                        {
+                            "key": "process.command_args",
+                            "type": "string",
+                            "value": "[\"/opt/java/openjdk/bin/java\",\"-jar\",\"app.jar\"]"
+                        },
+                        {
+                            "key": "process.executable.path",
+                            "type": "string",
+                            "value": "/opt/java/openjdk/bin/java"
+                        },
+                        {
+                            "key": "process.pid",
+                            "type": "int64",
+                            "value": 1
+                        },
+                        {
+                            "key": "process.runtime.description",
+                            "type": "string",
+                            "value": "Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.9+10-LTS"
+                        },
+                        {
+                            "key": "process.runtime.name",
+                            "type": "string",
+                            "value": "OpenJDK Runtime Environment"
+                        },
+                        {
+                            "key": "process.runtime.version",
+                            "type": "string",
+                            "value": "21.0.9+10-LTS"
+                        },
+                        {
+                            "key": "service.instance.id",
+                            "type": "string",
+                            "value": "82d866f1-c8ee-4be8-b486-68ce3ed755df"
+                        },
+                        {
+                            "key": "service.version",
+                            "type": "string",
+                            "value": "2.0.0-SNAPSHOT"
+                        },
+                        {
+                            "key": "telemetry.distro.name",
+                            "type": "string",
+                            "value": "opentelemetry-java-instrumentation"
+                        },
+                        {
+                            "key": "telemetry.distro.version",
+                            "type": "string",
+                            "value": "2.24.0"
+                        },
+                        {
+                            "key": "telemetry.sdk.language",
+                            "type": "string",
+                            "value": "java"
+                        },
+                        {
+                            "key": "telemetry.sdk.name",
+                            "type": "string",
+                            "value": "opentelemetry"
+                        },
+                        {
+                            "key": "telemetry.sdk.version",
+                            "type": "string",
+                            "value": "1.58.0"
+                        }
+                    ]
+                }
+            },
+            "warnings": null
+        }
+    ],
+    "total": 0,
+    "limit": 0,
+    "offset": 0,
+    "errors": null
+}
