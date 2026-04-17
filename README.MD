@@ -31,11 +31,20 @@
 </p>
 
 
+## 🎬 Demo / デモ
+
 <p align="center">
-  <video src="https://github.com/damouu/distributed-library-system/issues/2#issue-4280105326" controls="controls" style="max-width: 100%; border-radius: 10px;">
-    Your browser does not support the video tag.
-  </video>
+  <a href="https://github.com/damouu/distributed-library-system/issues/2#issue-4280105326">
+    <img src="docs/images/demo-thumbnail.png" width="80%" alt="Watch Demo"/>
+  </a>
 </p>
+
+<p align="center">
+  <img src="docs/images/demo.gif" width="80%" alt="Demo Preview"/>
+</p>
+
+**EN:** Click the image above to watch the full demo.  
+**JP:** 上の画像をクリックするとデモ動画を視聴できます。
 
 ---
 
