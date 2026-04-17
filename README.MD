@@ -31,7 +31,11 @@
 </p>
 
 
-## 🎬 Demo / デモ
+## 🎬 System Demo / システムデモ
+
+**EN:** Real-time distributed workflow: borrow → Kafka → async processing → analytics ranking update  
+
+**JP:** 分散システムのリアルタイム処理：貸出 → Kafka → 非同期処理 → ランキング更新
 
 <p align="center">
   <a href="https://github.com/damouu/distributed-library-system/issues/2#issue-4280105326">
