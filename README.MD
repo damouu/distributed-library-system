@@ -30,6 +30,13 @@
 
 </p>
 
+
+<p align="center">
+  <video src="https://github.com/damouu/distributed-library-system/issues/2#issue-4280105326" controls="controls" style="max-width: 100%; border-radius: 10px;">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
 ---
 
 ## 🧩 Architecture Overview / システム構成
