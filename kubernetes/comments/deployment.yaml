@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: comments
+  namespace: default
+  annotations:
+    keel.sh/policy: "all"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: comments
+  template:
+    metadata:
+      labels:
+        app: comments
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: comments
+                topologyKey: kubernetes.io/hostname
+      containers:
+        - name: comments
+          image: damou/library-app-comments:67630416576b835e7d7de242dba9f461e8669e05
+
+          ports:
+            - containerPort: 3000
+
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: comments-secret
+                  key: MONGODB_URI
+
+            - name: MONGODB_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: comments-secret
+                  key: MONGODB_DATABASE
+
+            - name: PUBLIC_KEY_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: PUBLIC_KEY_PATH
+
+          volumeMounts:
+            - name: public-key
+              mountPath: /app/keys/public_key.pem
+              subPath: public_key.pem
+              readOnly: true
+
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: 3000
+            initialDelaySeconds: 15
+            periodSeconds: 30
+
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+      volumes:
+        - name: public-key
+          secret:
+            secretName: comments-public-key

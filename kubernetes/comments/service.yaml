@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: comments
+  labels:
+    app: comments
+
+spec:
+  selector:
+    app: comments
+
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
