@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: borrow
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: borrow
+  endpoints:
+    - port: http
+      path: /api/borrow/actuator/prometheus
+      interval: 15s

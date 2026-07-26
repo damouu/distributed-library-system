@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: borrow
+  namespace: default
+  annotations:
+    keel.sh/policy: "all"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: borrow
+  template:
+    metadata:
+      labels:
+        app: borrow
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: borrow
+                topologyKey: "kubernetes.io/hostname"
+      containers:
+        - name: borrow
+          image: damou/library-app-borrow:9387604fbcdea01192780cdc5eca4bb731626367
+
+          volumeMounts:
+            - name: public-key-volume
+              mountPath: /etc/keys
+              readOnly: true
+
+          ports:
+            - containerPort: 8083
+          envFrom:
+            - configMapRef:
+                name: borrow-config
+
+            - secretRef:
+                name: borrow-secret
+          env:
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-bootstrap:9092"
+
+            - name: OTEL_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: borrow-config
+                  key: OTEL_SERVICE_NAME
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: borrow-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+
+          livenessProbe:
+            httpGet:
+              path: /api/borrow/actuator/health
+              port: 8083
+            initialDelaySeconds: 90
+
+      volumes:
+        - name: public-key-volume
+          secret:
+            secretName: auth-keys
+            items:
+              - key: public.pem
+                path: public_key.pem
