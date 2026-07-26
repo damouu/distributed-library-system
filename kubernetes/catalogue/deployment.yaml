@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue
+  namespace: default
+  annotations:
+    keel.sh/policy: "all"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: catalogue
+  template:
+    metadata:
+      labels:
+        app: catalogue
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: catalogue
+                topologyKey: kubernetes.io/hostname
+      containers:
+        - name: catalogue
+          image: damou/library-app-catalogue:10bb5d854d4cd9036a0de6c32a744fef7568d38c
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: catalogue-config
+                  key: SPRING_DATASOURCE_URL
+
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: catalogue-db-secret
+                  key: POSTGRES_USER
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: catalogue-db-secret
+                  key: POSTGRES_PASSWORD
+
+            - name: KAFKA_HOST
+              value: "kafka-bootstrap"
+
+            - name: KAFKA_PORT
+              value: "9092"
+
+            - name: SPRING_REDIS_HOST
+              value: "catalogue-redis"
+
+            - name: SPRING_REDIS_PORT
+              value: "6379"
+
+            - name: OTEL_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: catalogue-config
+                  key: OTEL_SERVICE_NAME
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: catalogue-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+
+          livenessProbe:
+            httpGet:
+              path: /api/catalogue/actuator/health
+              port: 8083
+            initialDelaySeconds: 90

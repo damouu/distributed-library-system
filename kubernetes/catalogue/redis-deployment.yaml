@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalogue-redis
+  template:
+    metadata:
+      labels:
+        app: catalogue-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7
+          ports:
+            - containerPort: 6379
