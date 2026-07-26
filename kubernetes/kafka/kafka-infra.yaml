@@ -1,0 +1,150 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-headless
+  labels:
+    app: kafka
+spec:
+  clusterIP: None
+
+  publishNotReadyAddresses: true
+
+  selector:
+    app: kafka
+
+  ports:
+    - name: internal
+      port: 9092
+      targetPort: 9092
+
+    - name: controller
+      port: 9093
+      targetPort: 9093
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: kafka
+  labels:
+    app: kafka
+spec:
+  serviceName: "kafka-headless"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka
+
+  template:
+    metadata:
+      labels:
+        app: kafka
+
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+
+
+      initContainers:
+        - name: fix-permissions
+          image: busybox:latest
+          command: [ "sh", "-c", "chown -R 1000:1000 /var/lib/kafka/data" ]
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+            - name: kafka-data
+              mountPath: /var/lib/kafka/data
+
+
+      containers:
+        - name: kafka
+          image: confluentinc/cp-kafka:7.8.5
+          ports:
+            - containerPort: 9092
+              name: internal
+            - containerPort: 9093
+              name: controller
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1Gi
+
+          startupProbe:
+            tcpSocket:
+              port: 9092
+            periodSeconds: 5
+            failureThreshold: 24
+
+          livenessProbe:
+            tcpSocket:
+              port: 9092
+            initialDelaySeconds: 120
+            periodSeconds: 20
+
+          readinessProbe:
+            tcpSocket:
+              port: 9092
+            initialDelaySeconds: 0
+            periodSeconds: 10
+
+          env:
+            - name: CLUSTER_ID
+              value: "1L6g7nGhU-eAKfL--X25wo"
+
+            - name: KAFKA_NODE_ID
+              value: "0"
+
+            - name: KAFKA_PROCESS_ROLES
+              value: "broker,controller"
+
+            - name: KAFKA_CONTROLLER_QUORUM_VOTERS
+              value: "0@kafka-0.kafka-headless:9093"
+
+            - name: KAFKA_LISTENERS
+              value: "INTERNAL://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093"
+
+            - name: KAFKA_ADVERTISED_LISTENERS
+              value: "INTERNAL://kafka-0.kafka-headless:9092"
+
+            - name: KAFKA_LISTENER_SECURITY_PROTOCOL_MAP
+              value: "INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT"
+
+            - name: KAFKA_INTER_BROKER_LISTENER_NAME
+              value: "INTERNAL"
+
+            - name: KAFKA_CONTROLLER_LISTENER_NAMES
+              value: "CONTROLLER"
+
+            - name: KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR
+              value: "1"
+
+            - name: KAFKA_LOG_DIRS
+              value: "/var/lib/kafka/data"
+
+          volumeMounts:
+            - name: kafka-data
+              mountPath: /var/lib/kafka/data
+  volumeClaimTemplates:
+    - metadata:
+        name: kafka-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 10Gi
+---
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-bootstrap
+spec:
+  selector:
+    app: kafka
+  ports:
+    - port: 9092
+      targetPort: 9092
+      name: internal
