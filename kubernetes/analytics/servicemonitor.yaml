@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: analytics
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: analytics
+  endpoints:
+    - port: http
+      path: /api/analytics/actuator/prometheus
+      interval: 15s

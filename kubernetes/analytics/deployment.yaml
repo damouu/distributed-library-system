@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analytics
+  namespace: default
+  annotations:
+    keel.sh/policy: "all"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: analytics
+  template:
+    metadata:
+      labels:
+        app: analytics
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    app: analytics
+      containers:
+        - name: analytics
+          image: damou/library-app-analytics:3b6869bbd145f4757689515fa173d6c537e20de9
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: analytics-config
+                  key: SPRING_DATASOURCE_URL
+
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: analytics-db-secret
+                  key: POSTGRES_USER
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: analytics-db-secret
+                  key: POSTGRES_PASSWORD
+
+            - name: KAFKA_HOST
+              value: "kafka-bootstrap"
+
+            - name: KAFKA_PORT
+              value: "9092"
+
+            - name: SPRING_DATA_REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: analytics-config
+                  key: SPRING_DATA_REDIS_HOST
+
+            - name: SPRING_DATA_REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: analytics-config
+                  key: SPRING_DATA_REDIS_PORT
+
+            - name: OTEL_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: analytics-config
+                  key: OTEL_SERVICE_NAME
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: analytics-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+
+          volumeMounts:
+            - name: jwt-public-key
+              mountPath: /etc/keys
+              readOnly: true
+
+          livenessProbe:
+            httpGet:
+              path: /api/analytics/actuator/health
+              port: 8083
+            initialDelaySeconds: 90
+
+      volumes:
+        - name: jwt-public-key
+          secret:
+            secretName: jwt-public-key
