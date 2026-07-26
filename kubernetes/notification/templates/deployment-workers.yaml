@@ -1,0 +1,86 @@
+{{- range .Values.workers }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-worker-{{ .name }}
+  labels:
+    app: notification-worker-{{ .name }}
+
+spec:
+  replicas: {{ .replicas }}
+
+  selector:
+    matchLabels:
+      app: notification-worker-{{ .name }}
+
+  template:
+    metadata:
+      labels:
+        app: notification-worker-{{ .name }}
+
+    spec:
+      terminationGracePeriodSeconds: 30
+
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: notification-worker-{{ .name }}
+              topologyKey: kubernetes.io/hostname
+
+      securityContext:
+        runAsUser: 33
+        runAsGroup: 33
+        fsGroup: 33
+
+      containers:
+        - name: worker
+
+          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+
+          command:
+            - php
+            - artisan
+            - {{ .artisanCommand }}
+
+          env:
+            - name: KAFKA_CONSUMER_GROUP_ID
+              value: {{ .consumerGroup | quote }}
+
+          envFrom:
+            - configMapRef:
+                name: notification-config
+            - secretRef:
+                name: notification-secret
+
+          resources:
+            requests:
+              cpu: {{ $.Values.resources.requests.cpu }}
+              memory: {{ $.Values.resources.requests.memory }}
+            limits:
+              cpu: {{ $.Values.resources.limits.cpu }}
+              memory: {{ $.Values.resources.limits.memory }}
+
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - pgrep -f "php artisan {{ .artisanCommand }}"
+            initialDelaySeconds: 20
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+
+      restartPolicy: Always
+
+  {{- end }}
