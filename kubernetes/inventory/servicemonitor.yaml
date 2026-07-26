@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: inventory
+  labels:
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: inventory
+  endpoints:
+    - port: http
+      path: /api/inventory/actuator/prometheus
+      interval: 15s

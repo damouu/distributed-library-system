@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory
+  namespace: default
+  annotations:
+    keel.sh/policy: "all"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: inventory
+  template:
+    metadata:
+      labels:
+        app: inventory
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: inventory
+                topologyKey: kubernetes.io/hostname
+      containers:
+        - name: inventory
+          image: damou/library-app-inventory:63839ca55b3e8a149a10e492e01fc8344a4e724e
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: inventory-config
+                  key: SPRING_DATASOURCE_URL
+
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: inventory-db-secret
+                  key: POSTGRES_USER
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: inventory-db-secret
+                  key: POSTGRES_PASSWORD
+
+            - name: KAFKA_HOST
+              value: "kafka-bootstrap"
+
+            - name: KAFKA_PORT
+              value: "9092"
+
+            - name: OTEL_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: inventory-config
+                  key: OTEL_SERVICE_NAME
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: inventory-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+
+          livenessProbe:
+            httpGet:
+              path: /api/inventory/actuator/health
+              port: 8083
+            initialDelaySeconds: 90
