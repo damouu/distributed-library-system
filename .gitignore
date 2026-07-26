@@ -64,3 +64,9 @@ deployment/kubernetes/**/public-key-secret.yaml
 notification/.env
 deployment/kubernetes/openresty/files/public.pem
 mailpit/
+kubernetes/openresty/files/public.pem
+kubernetes/openresty/templates/public-key-secret.yaml
+kubernetes/borrow/ko.yaml
+kubernetes/borrow/ok.yaml
+kubernetes/comments/ConfigMap.yaml
+kubernetes/analytics/db-secret.yaml
