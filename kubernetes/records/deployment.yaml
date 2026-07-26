@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: records
+  namespace: default
+  annotations:
+    keel.sh/policy: "all"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: records
+  template:
+    metadata:
+      labels:
+        app: records
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: records
+                topologyKey: kubernetes.io/hostname
+      containers:
+        - name: records
+          image: damou/library-app-records:29747863f3a881d28e29d9b7a47737998760fe0e
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: records-config
+                  key: SPRING_DATASOURCE_URL
+
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: records-db-secret
+                  key: POSTGRES_USER
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: records-db-secret
+                  key: POSTGRES_PASSWORD
+
+            - name: KAFKA_HOST
+              value: "kafka-bootstrap"
+
+            - name: KAFKA_PORT
+              value: "9092"
+
+            - name: OTEL_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: records-config
+                  key: OTEL_SERVICE_NAME
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: records-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+
+
+          volumeMounts:
+            - name: jwt-public-key
+              mountPath: /etc/keys
+              readOnly: true
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8083
+            initialDelaySeconds: 90
+
+      volumes:
+        - name: jwt-public-key
+          secret:
+            secretName: auth-keys
+            items:
+              - key: public.pem
+                path: public_key.pem
