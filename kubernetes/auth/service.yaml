@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: library-app-auth
+  labels:
+    app: library-app-auth
+
+spec:
+  selector:
+    app: library-app-auth
+
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
