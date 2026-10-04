@@ -6,5 +6,4 @@ resources:
   - service-cache.yaml
   - service.yaml
   - configmap.yaml
-  - secret.yaml
   - redis.yaml
