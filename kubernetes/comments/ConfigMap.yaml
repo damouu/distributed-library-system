@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: comments-config
+data:
+  PUBLIC_KEY_PATH: "/app/keys/public_key.pem"
+
+  OTEL_SERVICE_NAME: "comments"
+  OTEL_SERVICE_VERSION: "2.0.0"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4317"
+
+  KAFKA_MEMBER_EVENTS_TOPIC: "auth-create-topic"
+  KAFKA_MEMBER_EVENTS_GROUP_ID: "comment-group"
+  KAFKA_BROKERS: "library-app-kafka-library-app.l.aivencloud.com:19687"
+  KAFKA_SASL_MECHANISM: "scram-sha-256"
+  KAFKA_CA_PATH: "/app/certs/ca.pem"
