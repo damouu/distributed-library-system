@@ -47,7 +47,7 @@ spec:
               mountPath: /var/www/html/keys
               readOnly: true
 
-          image: damou/library-app-auth:3726aae54b3163504e47274da71c2020c79b8536-otel-3
+          image: damou/library-app-auth:faeaa2e3125aa3d9dfa647bf389c06d784799bdd
 
           ports:
             - containerPort: 80
