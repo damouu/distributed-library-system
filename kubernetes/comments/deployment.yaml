@@ -5,15 +5,19 @@ metadata:
   namespace: default
   annotations:
     keel.sh/policy: "all"
+
 spec:
   replicas: 2
+
   selector:
     matchLabels:
       app: comments
+
   template:
     metadata:
       labels:
         app: comments
+
     spec:
       affinity:
         podAntiAffinity:
@@ -24,9 +28,10 @@ spec:
                   matchLabels:
                     app: comments
                 topologyKey: kubernetes.io/hostname
+
       containers:
         - name: comments
-          image: damou/library-app-comments:67630416576b835e7d7de242dba9f461e8669e05
+          image: damou/library-app-comments:def21b778224d8ee49d334e87d6a9b4d8b659285
 
           ports:
             - containerPort: 3000
@@ -44,11 +49,71 @@ spec:
                   name: comments-secret
                   key: MONGODB_DATABASE
 
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: comments-secret
+                  key: KAFKA_USERNAME
+
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: comments-secret
+                  key: KAFKA_PASSWORD
+
             - name: PUBLIC_KEY_PATH
               valueFrom:
                 configMapKeyRef:
                   name: comments-config
                   key: PUBLIC_KEY_PATH
+
+            - name: OTEL_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: OTEL_SERVICE_NAME
+
+            - name: OTEL_SERVICE_VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: OTEL_SERVICE_VERSION
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+
+            - name: KAFKA_MEMBER_EVENTS_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: KAFKA_MEMBER_EVENTS_TOPIC
+
+            - name: KAFKA_MEMBER_EVENTS_GROUP_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: KAFKA_MEMBER_EVENTS_GROUP_ID
+
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: KAFKA_BROKERS
+
+            - name: KAFKA_SASL_MECHANISM
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: KAFKA_SASL_MECHANISM
+
+            - name: KAFKA_CA_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: comments-config
+                  key: KAFKA_CA_PATH
 
           volumeMounts:
             - name: public-key
@@ -56,21 +121,34 @@ spec:
               subPath: public_key.pem
               readOnly: true
 
-          livenessProbe:
-            httpGet:
-              path: /metrics
+            - name: kafka-ca
+              mountPath: /app/certs/ca.pem
+              subPath: ca.pem
+              readOnly: true
+
+          startupProbe:
+            tcpSocket:
               port: 3000
-            initialDelaySeconds: 15
+            periodSeconds: 5
+            failureThreshold: 12
+
+          livenessProbe:
+            tcpSocket:
+              port: 3000
             periodSeconds: 30
+            failureThreshold: 3
 
           readinessProbe:
-            httpGet:
-              path: /metrics
+            tcpSocket:
               port: 3000
-            initialDelaySeconds: 5
             periodSeconds: 10
+            failureThreshold: 3
 
       volumes:
         - name: public-key
           secret:
             secretName: comments-public-key
+
+        - name: kafka-ca
+          configMap:
+            name: comments-kafka-ca

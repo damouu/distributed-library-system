@@ -1,0 +1,33 @@
+apiVersion: v1
+data:
+  ca.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIERDCCAqygAwIBAgIUSTQTbSVgrVk+lqDbZmIErPD1uF4wDQYJKoZIhvcNAQEM
+    BQAwOjE4MDYGA1UEAwwvYzNkYWQ2ZmYtY2RiZS00NjA1LWEwMjMtYmZhYTVhODlk
+    NjJjIFByb2plY3QgQ0EwHhcNMjYwOTE3MTIyMjU5WhcNMzYwOTE0MTIyMjU5WjA6
+    MTgwNgYDVQQDDC9jM2RhZDZmZi1jZGJlLTQ2MDUtYTAyMy1iZmFhNWE4OWQ2MmMg
+    UHJvamVjdCBDQTCCAaIwDQYJKoZIhvcNAQEBBQADggGPADCCAYoCggGBAMS7epYQ
+    5osGyjuvR6TDWEuVTWr6y/BT7hR36ZX1So3idiGHadezbavGSJ2wWnWr9qTrNYag
+    lIRFHyaSmZ7kpRs1+pnoUgVch3MVWBcUCC/F3iBje05lIVAzTGi24RN2I8KkYpdi
+    zKtonT7VnoGjDdR86gtq7zhvzyQglpDNcfCjdLsoc4bovieSkc8dOkh34FMjn5ng
+    2xHoolFdWKJXbtkEFYz9F9ycpYKrU1PHwGtOdRxm4O2RNeuJfKPvfFuHmhBR9vnN
+    KwXzjuDBQbIXqyxpe4grkAINxoiyWBhbRFLd5Atet8m60NaZsZtJwhVdIwKXE8xd
+    c7AzCauUlmb7nAge9kkRbFvDWYTJpgXFH/9t0qg/5L5dx3X1qe22ycZCC8UdG8qF
+    Suy8Ytxsei6SF/WCph6XuwxHCZCRfjoA5EXEDJXObRVgd6OlVCppkPGfMzrI6DDz
+    L2ic3TfnuHjs7jBp4B4+FeSa+Sn+GgHJK1z3RFtZyBYiNFpxx4hDumv9MQIDAQAB
+    o0IwQDAdBgNVHQ4EFgQUh/kELK4wcWQrTFhnQk/9M5mTue0wEgYDVR0TAQH/BAgw
+    BgEB/wIBADALBgNVHQ8EBAMCAQYwDQYJKoZIhvcNAQEMBQADggGBACeYy/pRn74k
+    U5dE5uPKemwd0Z9Ve1nxRYEoKxZ75yM5CSUq7IwD57OydPd/eMaZ5Q1h6nkoAWFj
+    p5nYZE5el8EEvSgJrww07bxh+M1WIeYv18Ua7vuHWJ012K7tj9vQxeKu2/dFwTum
+    ric1U3vO2yg6P+GZMVa6zSVwbmG9dN3fepusMQ21d8OOa3Zp9A8oAqlyfPf3y+GG
+    VlAznDvK0weB1dx5tRHm7g5ThQyNbYTU99UYExThXKaN6F5g+s8TeQTOx/7apWTS
+    anb9hyQZ5rgiP50aLCA7CWYNp+t39izvhzIPVP/NEF9ExR7y2x3avGQci8yJWAuS
+    FAWMl1t0+ylxyRl0GzRNYWFOQf3FsO4kgFDnQU6awfNrimG/e21fO4xzP6TNbLgK
+    el4wyfk0pC8NjY7kJOxS7vrsKvZslbcivLPsrnE616dQf54zdPXWaRPVg6IMgIgU
+    eP3PCFiY7DTViyhEs7XUOfwk9FEn58LE1Piexi89Ch/azoFFqqoWYg==
+    -----END CERTIFICATE-----
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: comments-kafka-ca
+  namespace: default
