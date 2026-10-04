@@ -31,7 +31,7 @@ spec:
 
       containers:
         - name: comments
-          image: damou/library-app-comments:561e7947b9edb7db9feca1fda66bbaeb6eb2edb1
+          image: damou/library-app-comments:c232892fc93ece9b1186791fb8c3a3beffbf8628
 
           ports:
             - containerPort: 3000
