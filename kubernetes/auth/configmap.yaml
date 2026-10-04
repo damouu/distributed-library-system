@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-config
+data:
+  APP_NAME: Laravel
+  APP_ENV: local
+  APP_DEBUG: "true"
+
+  LOG_CHANNEL: stack
+  LOG_LEVEL: debug
+
+  REDIS_HOST: auth-cache
+  REDIS_PORT: "6379"
+  REDIS_CLIENT: predis
+
+  DB_CONNECTION: mongodb
+
+  APP_SERVICE_NAME: library-app-authentication-v2
+
+  KAFKA_BROKERS: library-app-kafka-library-app.l.aivencloud.com:19687
+  KAFKA_SECURITY_PROTOCOL: SASL_SSL
+  KAFKA_MECHANISMS: SCRAM-SHA-256
+  KAFKA_CONSUMER_GROUP_ID: groupid
+  KAFKA_COMPRESSION_TYPE: none
+
+  SESSION_DRIVER: array
+  CACHE_STORE: database
+
+  OTEL_SERVICE_NAME: authentication
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"
+  OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
+  OTEL_PHP_DEBUG_SCOPES: "false"
+  OTEL_TRACES_SAMPLER: "always_on"
+  OTEL_PHP_AUTOLOAD_ENABLED: "true"
+
+  OTEL_TRACES_EXPORTER: otlp
+  OTEL_LOGS_EXPORTER: none
+  OTEL_METRICS_EXPORTER: none
+  OTEL_BSP_MAX_EXPORT_BATCH_SIZE: "1"
+  OTEL_BSP_SCHEDULE_DELAY: "1000"
+
+  FRONTEND_URL: http://library-frontend:3000
+  SANCTUM_STATEFUL_DOMAINS: localhost
+  CORS_ALLOWED_ORIGINS: http://localhost:8080
