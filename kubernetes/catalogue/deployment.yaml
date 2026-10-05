@@ -24,7 +24,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
       containers:
         - name: catalogue
-          image: damou/library-app-catalogue:10bb5d854d4cd9036a0de6c32a744fef7568d38c
+          image: damou/library-app-catalogue:3aa2647e5497a8ab85e5bf9c16bc48a4f4d90742
 
           volumeMounts:
             - name: kafka-aiven-ca
