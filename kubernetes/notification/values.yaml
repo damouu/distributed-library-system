@@ -9,11 +9,52 @@ config:
     env: local
     debug: "true"
     url: http://localhost
+
     locale: en
     fallbackLocale: en
     fakerLocale: en_US
 
-  # ...
+  otel:
+    tracesExporter: "otlp"
+    endpoint: "http://jaeger:4318"
+    protocol: "http/protobuf"
+    logsExporter: "none"
+    metricsExporter: "none"
+    bspMaxExportBatchSize: "1"
+    tracesSampler: always_on
+    phpAutoloadEnabled: "true"
+    serviceName: "notification"
+    bspScheduleDelay: "1000"
+
+  log:
+    channel: stack
+    stack: single
+    level: debug
+
+  database:
+    connection: pgsql
+    host: ep-twilight-sunset-aom9ylam-pooler.c-2.ap-southeast-1.aws.neon.tech
+    port: "5432"
+    database: notification
+    sslmode: require
+
+  frontend:
+    url: http://localhost:3000
+
+  session:
+    driver: "null"
+    lifetime: "120"
+    encrypt: "false"
+    path: /
+    domain: localhost
+
+  cache:
+    store: redis
+
+  redis:
+    client: phpredis
+    host: notification-redis
+    port: "6379"
 
   kafka:
     brokers: library-app-kafka-library-app.l.aivencloud.com:19687
@@ -23,12 +64,33 @@ config:
     compressionType: none
     debug: "true"
 
-  # ...
+  broadcast:
+    connection: log
+
+  filesystem:
+    disk: local
+
+  queue:
+    connection: "null"
+
+  mail:
+    mailer: resend
+    fromAddress: no-reply@damou.dev
+    fromName: Library App
+
+  aws:
+    region: us-east-1
+    bucket: ""
+    usePathStyleEndpoint: "false"
+
+  cors:
+    allowedOrigins: http://localhost:8080
 
 resources:
   requests:
     cpu: 100m
     memory: 256Mi
+
   limits:
     cpu: 500m
     memory: 512Mi
@@ -41,6 +103,7 @@ redis:
     requests:
       cpu: 50m
       memory: 64Mi
+
     limits:
       cpu: 250m
       memory: 256Mi
