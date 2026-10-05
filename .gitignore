@@ -70,4 +70,3 @@ kubernetes/borrow/ko.yaml
 kubernetes/borrow/ok.yaml
 kubernetes/comments/ConfigMap.yaml
 kubernetes/analytics/db-secret.yaml
-kubernetes/notification/values.yaml

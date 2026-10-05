@@ -1,0 +1,67 @@
+image:
+  repository: damou/library-app-notification
+  tag: 757eedff2a2dc8981cd8ead0473019d14f55b1c6
+  pullPolicy: IfNotPresent
+
+config:
+  app:
+    name: Notification
+    env: local
+    debug: "true"
+    url: http://localhost
+    locale: en
+    fallbackLocale: en
+    fakerLocale: en_US
+
+  # ...
+
+  kafka:
+    brokers: library-app-kafka-library-app.l.aivencloud.com:19687
+    securityProtocol: SASL_SSL
+    mechanisms: SCRAM-SHA-256
+    caPath: /var/www/html/ca.pem
+    compressionType: none
+    debug: "true"
+
+  # ...
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+redis:
+  image: redis:8-alpine
+  storage: 512Mi
+
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+workers:
+  - name: users
+    artisanCommand: kafka:consume-users
+    consumerGroup: notification-user-group
+    replicas: 2
+
+  - name: catalogue
+    artisanCommand: kafka:consume-catalog
+    consumerGroup: notification-catalogue-group
+    replicas: 2
+
+  - name: borrow
+    artisanCommand: kafka:consume-borrow
+    consumerGroup: notification-borrow-group
+    replicas: 2
+
+  - name: return
+    artisanCommand: kafka:consume-return
+    consumerGroup: notification-return-group
+    replicas: 2
