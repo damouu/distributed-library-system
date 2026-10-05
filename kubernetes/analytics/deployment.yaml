@@ -46,11 +46,23 @@ spec:
                   name: analytics-db-secret
                   key: POSTGRES_PASSWORD
 
-            - name: KAFKA_HOST
-              value: "kafka-bootstrap"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "library-app-kafka-library-app.l.aivencloud.com:19687"
 
-            - name: KAFKA_PORT
-              value: "9092"
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_USERNAME
+
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_PASSWORD
+
+            - name: KAFKA_CA_PATH
+              value: "file:/app/ca.pem"
 
             - name: SPRING_DATA_REDIS_HOST
               valueFrom:
@@ -81,6 +93,11 @@ spec:
               mountPath: /etc/keys
               readOnly: true
 
+            - name: kafka-aiven-ca
+              mountPath: /app/ca.pem
+              subPath: ca.pem
+              readOnly: true
+
           livenessProbe:
             httpGet:
               path: /api/analytics/actuator/health
@@ -91,3 +108,7 @@ spec:
         - name: jwt-public-key
           secret:
             secretName: jwt-public-key
+
+        - name: kafka-aiven-ca
+          configMap:
+            name: kafka-aiven-ca
