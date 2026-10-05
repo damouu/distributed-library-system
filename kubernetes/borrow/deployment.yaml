@@ -25,7 +25,7 @@ spec:
 
       containers:
         - name: borrow
-          image: damou/library-app-borrow:9387604fbcdea01192780cdc5eca4bb731626367
+          image: damou/library-app-borrow:b975bdd79824a25760ec0aa4c929fd0ea185bd53
 
           volumeMounts:
             - name: public-key-volume
