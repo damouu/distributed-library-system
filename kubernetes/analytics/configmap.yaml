@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: analytics-config
+data:
+  SPRING_DATASOURCE_URL: jdbc:postgresql://ep-twilight-sunset-aom9ylam-pooler.c-2.ap-southeast-1.aws.neon.tech/analytics?sslmode=require
+  SPRING_DATA_REDIS_HOST: analytics-redis
+  SPRING_DATA_REDIS_PORT: "6379"
+  OTEL_SERVICE_NAME: analytics
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"
+  OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"

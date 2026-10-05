@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: analytics
   namespace: default
-  annotations:
-    keel.sh/policy: "all"
 spec:
   replicas: 2
   selector:
