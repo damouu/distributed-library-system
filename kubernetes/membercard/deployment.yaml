@@ -25,7 +25,7 @@ spec:
 
       containers:
         - name: membercard
-          image: damou/library-app-membercard:0830c9ff598f1fb06d759860646954710b39b845
+          image: damou/library-app-membercard:179e8fba417d642087efeea2824501fe83cbd555
 
           ports:
             - containerPort: 8083
