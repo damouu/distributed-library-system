@@ -39,9 +39,7 @@ spec:
                 path: public.pem
 
       containers:
-
         - name: auth
-
           volumeMounts:
             - name: auth-keys
               mountPath: /var/www/html/keys
@@ -51,16 +49,25 @@ spec:
 
           ports:
             - containerPort: 80
-
-
           envFrom:
-
             - configMapRef:
                 name: auth-config
-
-
             - secretRef:
                 name: auth-secret
+
+          env:
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_USERNAME
+
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_PASSWORD
+
 
           startupProbe:
             httpGet:
