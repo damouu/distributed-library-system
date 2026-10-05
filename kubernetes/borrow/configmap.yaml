@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: borrow-config
+data:
+  SPRING_DATASOURCE_URL: jdbc:postgresql://ep-twilight-sunset-aom9ylam-pooler.c-2.ap-southeast-1.aws.neon.tech/borrow?sslmode=require
+  DB_NAME: borrow
+  OTEL_SERVICE_NAME: borrow
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"
