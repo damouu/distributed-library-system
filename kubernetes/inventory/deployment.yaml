@@ -24,7 +24,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
       containers:
         - name: inventory
-          image: damou/library-app-inventory:63839ca55b3e8a149a10e492e01fc8344a4e724e
+          image: damou/library-app-inventory:35f6a8a043fda2be0a529e1f4336b4a5a48f53c8
           volumeMounts:
             - name: kafka-aiven-ca
               mountPath: /app/ca.pem
