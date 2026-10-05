@@ -24,7 +24,7 @@ spec:
                     app: analytics
       containers:
         - name: analytics
-          image: damou/library-app-analytics:db70b73c76d91c971436bf37ac45bb8e5aba99a0
+          image: damou/library-app-analytics:5e21057acf6e864e4601d1d4ee1f826463e36709
           ports:
             - containerPort: 8083
           env:
