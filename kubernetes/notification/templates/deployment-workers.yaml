@@ -35,6 +35,11 @@ spec:
         runAsGroup: 33
         fsGroup: 33
 
+      volumes:
+        - name: kafka-aiven-ca
+          configMap:
+            name: kafka-aiven-ca
+
       containers:
         - name: worker
 
@@ -46,13 +51,32 @@ spec:
             - artisan
             - {{ .artisanCommand }}
 
+          volumeMounts:
+            - name: kafka-aiven-ca
+              mountPath: /var/www/html/ca.pem
+              subPath: ca.pem
+              readOnly: true
+
           env:
             - name: KAFKA_CONSUMER_GROUP_ID
               value: {{ .consumerGroup | quote }}
 
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_USERNAME
+
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_PASSWORD
+
           envFrom:
             - configMapRef:
                 name: notification-config
+
             - secretRef:
                 name: notification-secret
 

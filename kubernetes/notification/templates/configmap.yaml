@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: notification-config
+  labels:
+    app: notification
+data:
+  APP_NAME: {{ .Values.config.app.name | quote }}
+  APP_ENV: {{ .Values.config.app.env | quote }}
+  APP_DEBUG: {{ .Values.config.app.debug | quote }}
+  APP_URL: {{ .Values.config.app.url | quote }}
+
+  APP_LOCALE: {{ .Values.config.app.locale | quote }}
+  APP_FALLBACK_LOCALE: {{ .Values.config.app.fallbackLocale | quote }}
+  APP_FAKER_LOCALE: {{ .Values.config.app.fakerLocale | quote }}
+
+  LOG_CHANNEL: {{ .Values.config.log.channel | quote }}
+  LOG_STACK: {{ .Values.config.log.stack | quote }}
+  LOG_LEVEL: {{ .Values.config.log.level | quote }}
+
+  OTEL_TRACES_EXPORTER: {{ .Values.config.otel.tracesExporter | quote }}
+  OTEL_EXPORTER_OTLP_ENDPOINT: {{ .Values.config.otel.endpoint | quote }}
+  OTEL_EXPORTER_OTLP_PROTOCOL: {{ .Values.config.otel.protocol | quote }}
+  OTEL_LOGS_EXPORTER: {{ .Values.config.otel.logsExporter | quote }}
+  OTEL_METRICS_EXPORTER: {{ .Values.config.otel.metricsExporter | quote }}
+  OTEL_BSP_MAX_EXPORT_BATCH_SIZE: {{ .Values.config.otel.bspMaxExportBatchSize | quote }}
+  OTEL_BSP_SCHEDULE_DELAY: {{ .Values.config.otel.bspScheduleDelay | quote }}
+
+  DB_CONNECTION: {{ .Values.config.database.connection | quote }}
+  DB_HOST: {{ .Values.config.database.host | quote }}
+  DB_PORT: {{ .Values.config.database.port | quote }}
+  DB_DATABASE: {{ .Values.config.database.database | quote }}
+
+  FRONTEND_URL: {{ .Values.config.frontend.url | quote }}
+
+  SESSION_DRIVER: {{ .Values.config.session.driver | quote }}
+  SESSION_LIFETIME: {{ .Values.config.session.lifetime | quote }}
+  SESSION_ENCRYPT: {{ .Values.config.session.encrypt | quote }}
+  SESSION_PATH: {{ .Values.config.session.path | quote }}
+  SESSION_DOMAIN: {{ .Values.config.session.domain | quote }}
+
+  CACHE_STORE: {{ .Values.config.cache.store | quote }}
+
+  REDIS_CLIENT: {{ .Values.config.redis.client | quote }}
+  REDIS_HOST: {{ .Values.config.redis.host | quote }}
+  REDIS_PORT: {{ .Values.config.redis.port | quote }}
+
+  KAFKA_BROKERS: {{ .Values.config.kafka.brokers | quote }}
+  KAFKA_SECURITY_PROTOCOL: {{ .Values.config.kafka.securityProtocol | quote }}
+  KAFKA_MECHANISMS: {{ .Values.config.kafka.mechanisms | quote }}
+  KAFKA_CA_PATH: {{ .Values.config.kafka.caPath | quote }}
+  KAFKA_COMPRESSION_TYPE: {{ .Values.config.kafka.compressionType | quote }}
+  KAFKA_DEBUG: {{ .Values.config.kafka.debug | quote }}
+
+  BROADCAST_CONNECTION: {{ .Values.config.broadcast.connection | quote }}
+  FILESYSTEM_DISK: {{ .Values.config.filesystem.disk | quote }}
+  QUEUE_CONNECTION: {{ .Values.config.queue.connection | quote }}
+
+  MAIL_MAILER: {{ .Values.config.mail.mailer | quote }}
+  MAIL_FROM_ADDRESS: {{ .Values.config.mail.fromAddress | quote }}
+  MAIL_FROM_NAME: {{ .Values.config.mail.fromName | quote }}
+
+  AWS_DEFAULT_REGION: {{ .Values.config.aws.region | quote }}
+  AWS_BUCKET: {{ .Values.config.aws.bucket | quote }}
+  AWS_USE_PATH_STYLE_ENDPOINT: {{ .Values.config.aws.usePathStyleEndpoint | quote }}
+
+  OTEL_SERVICE_NAME: {{ .Values.config.otel.serviceName | quote }}
+  OTEL_TRACES_SAMPLER: {{ .Values.config.otel.tracesSampler | quote }}
+  OTEL_PHP_AUTOLOAD_ENABLED: {{ .Values.config.otel.phpAutoloadEnabled | quote }}
+
+  CORS_ALLOWED_ORIGINS: {{ .Values.config.cors.allowedOrigins | quote }}
