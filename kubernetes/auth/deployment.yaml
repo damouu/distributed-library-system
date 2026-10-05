@@ -37,12 +37,20 @@ spec:
                 path: private.pem
               - key: public.pem
                 path: public.pem
+        - name: kafka-aiven-ca
+          configMap:
+            name: kafka-aiven-ca
 
       containers:
         - name: auth
           volumeMounts:
             - name: auth-keys
               mountPath: /var/www/html/keys
+              readOnly: true
+
+            - name: kafka-aiven-ca
+              mountPath: /app/ca.pem
+              subPath: ca.pem
               readOnly: true
 
           image: damou/library-app-auth:faeaa2e3125aa3d9dfa647bf389c06d784799bdd
