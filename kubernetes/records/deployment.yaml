@@ -24,7 +24,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
       containers:
         - name: records
-          image: damou/library-app-records:29747863f3a881d28e29d9b7a47737998760fe0e
+          image: damou/library-app-records:21fe12a5ff273a8704e9b9062568151c6615f236
           ports:
             - containerPort: 8083
           env:
