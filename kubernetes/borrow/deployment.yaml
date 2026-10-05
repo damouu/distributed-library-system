@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: borrow
   namespace: default
-  annotations:
-    keel.sh/policy: "all"
 spec:
   replicas: 2
   selector:
@@ -23,7 +21,8 @@ spec:
                 labelSelector:
                   matchLabels:
                     app: borrow
-                topologyKey: "kubernetes.io/hostname"
+                topologyKey: kubernetes.io/hostname
+
       containers:
         - name: borrow
           image: damou/library-app-borrow:9387604fbcdea01192780cdc5eca4bb731626367
@@ -33,17 +32,39 @@ spec:
               mountPath: /etc/keys
               readOnly: true
 
+            - name: kafka-aiven-ca
+              mountPath: /app/ca.pem
+              subPath: ca.pem
+              readOnly: true
+
           ports:
             - containerPort: 8083
+
           envFrom:
             - configMapRef:
                 name: borrow-config
 
             - secretRef:
                 name: borrow-secret
+
           env:
-            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
-              value: "kafka-bootstrap:9092"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "library-app-kafka-library-app.l.aivencloud.com:19687"
+
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_USERNAME
+
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_PASSWORD
+
+            - name: KAFKA_CA_PATH
+              value: "file:/app/ca.pem"
 
             - name: OTEL_SERVICE_NAME
               valueFrom:
@@ -57,12 +78,6 @@ spec:
                   name: borrow-config
                   key: OTEL_EXPORTER_OTLP_ENDPOINT
 
-          livenessProbe:
-            httpGet:
-              path: /api/borrow/actuator/health
-              port: 8083
-            initialDelaySeconds: 90
-
       volumes:
         - name: public-key-volume
           secret:
@@ -70,3 +85,7 @@ spec:
             items:
               - key: public.pem
                 path: public_key.pem
+
+        - name: kafka-aiven-ca
+          configMap:
+            name: kafka-aiven-ca
