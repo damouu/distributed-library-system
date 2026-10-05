@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: records-config
+data:
+  SPRING_DATASOURCE_URL: jdbc:postgresql://ep-twilight-sunset-aom9ylam-pooler.c-2.ap-southeast-1.aws.neon.tech/records?sslmode=require
+  OTEL_SERVICE_NAME: records
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"
+  OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
