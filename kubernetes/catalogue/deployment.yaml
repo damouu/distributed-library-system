@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: catalogue
   namespace: default
-  annotations:
-    keel.sh/policy: "all"
 spec:
   replicas: 2
   selector:
@@ -27,6 +25,13 @@ spec:
       containers:
         - name: catalogue
           image: damou/library-app-catalogue:10bb5d854d4cd9036a0de6c32a744fef7568d38c
+
+          volumeMounts:
+            - name: kafka-aiven-ca
+              mountPath: /app/ca.pem
+              subPath: ca.pem
+              readOnly: true
+
           ports:
             - containerPort: 8083
           env:
@@ -48,16 +53,28 @@ spec:
                   name: catalogue-db-secret
                   key: POSTGRES_PASSWORD
 
-            - name: KAFKA_HOST
-              value: "kafka-bootstrap"
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "library-app-kafka-library-app.l.aivencloud.com:19687"
 
-            - name: KAFKA_PORT
-              value: "9092"
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_USERNAME
 
-            - name: SPRING_REDIS_HOST
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kafka-aiven-secret
+                  key: KAFKA_PASSWORD
+
+            - name: KAFKA_CA_PATH
+              value: "file:/app/ca.pem"
+
+            - name: SPRING_DATA_REDIS_HOST
               value: "catalogue-redis"
 
-            - name: SPRING_REDIS_PORT
+            - name: SPRING_DATA_REDIS_PORT
               value: "6379"
 
             - name: OTEL_SERVICE_NAME
@@ -77,3 +94,8 @@ spec:
               path: /api/catalogue/actuator/health
               port: 8083
             initialDelaySeconds: 90
+
+      volumes:
+        - name: kafka-aiven-ca
+          configMap:
+            name: kafka-aiven-ca

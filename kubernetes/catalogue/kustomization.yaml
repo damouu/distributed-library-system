@@ -7,5 +7,4 @@ resources:
   - configmap.yaml
   - redis-service.yaml
   - redis-deployment.yaml
-  - secret.yaml
   - servicemonitor.yaml
