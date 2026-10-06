@@ -38,7 +38,7 @@ spec:
 
       containers:
         - name: search-api
-          image: damou/library-app-search:c2a24d7b0a615ada6cb298d55b56fc195de2b121
+          image: damou/library-app-search:11cc581707f7e07c2c297aebaf5146078e41733e
           imagePullPolicy: IfNotPresent
 
           ports:
