@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search-api
+  labels:
+    app: search-api
+spec:
+  replicas: 2
+  revisionHistoryLimit: 10
+
+  selector:
+    matchLabels:
+      app: search-api
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
+  template:
+    metadata:
+      labels:
+        app: search-api
+
+    spec:
+      terminationGracePeriodSeconds: 30
+
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    app: search-api
+
+      containers:
+        - name: search-api
+          image: damou/library-app-search:c2a24d7b0a615ada6cb298d55b56fc195de2b121
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+
+          env:
+            - name: SERVER_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: search-api-config
+                  key: SERVER_PORT
+
+            - name: OPENSEARCH_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: search-api-config
+                  key: OPENSEARCH_URL
+
+            - name: OPENSEARCH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: search-api-secret
+                  key: OPENSEARCH_USERNAME
+
+            - name: OPENSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: search-api-secret
+                  key: OPENSEARCH_PASSWORD
+
+            - name: REDIS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: search-api-config
+                  key: REDIS_URL
+
+            - name: OTEL_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: search-api-config
+                  key: OTEL_SERVICE_NAME
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: search-api-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 1
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 1
+            failureThreshold: 3

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: search-api-config
+  namespace: default
+data:
+  SERVER_PORT: "8080"
+
+  OPENSEARCH_URL: "https://library-app-search-library-app.k.aivencloud.com:19674"
+
+  REDIS_URL: "redis://search-api-redis:6379"
+
+  OTEL_SERVICE_NAME: "search-api"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "jaeger:4317"
