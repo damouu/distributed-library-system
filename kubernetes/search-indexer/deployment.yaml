@@ -29,7 +29,7 @@ spec:
 
       containers:
         - name: search-indexer
-          image: damou/library-app-search-indexer:e982faa7b50459011220b228485c4f69f280495b
+          image: damou/library-app-search-indexer:e87048b13136f9571501ff37ca21876f57e7e498
           imagePullPolicy: IfNotPresent
 
           ports:
