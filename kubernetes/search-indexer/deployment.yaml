@@ -1,0 +1,151 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: search-indexer
+  labels:
+    app: search-indexer
+
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+
+  selector:
+    matchLabels:
+      app: search-indexer
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
+  template:
+    metadata:
+      labels:
+        app: search-indexer
+
+    spec:
+      terminationGracePeriodSeconds: 30
+
+      containers:
+        - name: search-indexer
+          image: damou/library-app-search-indexer:e982faa7b50459011220b228485c4f69f280495b
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: 8081
+              protocol: TCP
+
+          env:
+            - name: KAFKA_BROKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: search-indexer-config
+                  key: KAFKA_BROKERS
+
+            - name: KAFKA_TOPIC
+              valueFrom:
+                configMapKeyRef:
+                  name: search-indexer-config
+                  key: KAFKA_TOPIC
+
+            - name: KAFKA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: search-indexer-secret
+                  key: KAFKA_USERNAME
+
+            - name: KAFKA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: search-indexer-secret
+                  key: KAFKA_PASSWORD
+
+            - name: KAFKA_CA_PATH
+              value: /app/ca.pem
+
+            - name: OPENSEARCH_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: search-indexer-config
+                  key: OPENSEARCH_URL
+
+            - name: OPENSEARCH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: search-indexer-secret
+                  key: OPENSEARCH_USERNAME
+
+            - name: OPENSEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: search-indexer-secret
+                  key: OPENSEARCH_PASSWORD
+
+            - name: OPENSEARCH_CA_PATH
+              value: /app/opensearch-ca.pem
+
+            - name: CATALOGUE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: search-indexer-config
+                  key: CATALOGUE_URL
+
+            - name: OTEL_SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: search-indexer-config
+                  key: OTEL_SERVICE_NAME
+
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: search-indexer-config
+                  key: OTEL_EXPORTER_OTLP_ENDPOINT
+
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: search-indexer-config
+                  key: OTEL_EXPORTER_OTLP_PROTOCOL
+
+          volumeMounts:
+            - name: search-indexer-ca
+              mountPath: /app/ca.pem
+              subPath: ca.pem
+              readOnly: true
+
+            - name: search-indexer-ca
+              mountPath: /app/opensearch-ca.pem
+              subPath: opensearch-ca.pem
+              readOnly: true
+
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 1
+            failureThreshold: 3
+
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8081
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 1
+            failureThreshold: 3
+
+      volumes:
+        - name: search-indexer-ca
+          configMap:
+            name: search-indexer-ca
+            items:
+              - key: ca.pem
+                path: ca.pem
+              - key: opensearch-ca.pem
+                path: opensearch-ca.pem
