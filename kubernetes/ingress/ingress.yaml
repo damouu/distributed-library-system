@@ -29,25 +29,3 @@ spec:
                 name: jaeger
                 port:
                   number: 16686
-
-    - host: grafana.damou.dev
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: monitoring-grafana
-                port:
-                  number: 80
-
-    - host: prometheus.damou.dev
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: monitoring-kube-prometheus-prometheus
-                port:
-                  number: 9090
