@@ -29,7 +29,7 @@ data:
   CACHE_STORE: database
 
   OTEL_SERVICE_NAME: authentication
-  OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://alloy:4318"
   OTEL_EXPORTER_OTLP_PROTOCOL: http/protobuf
   OTEL_PHP_DEBUG_SCOPES: "false"
   OTEL_TRACES_SAMPLER: "always_on"

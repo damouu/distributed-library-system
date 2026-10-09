@@ -7,5 +7,5 @@ data:
   SPRING_DATA_REDIS_HOST: analytics-redis
   SPRING_DATA_REDIS_PORT: "6379"
   OTEL_SERVICE_NAME: analytics
-  OTEL_EXPORTER_OTLP_ENDPOINT: "http://jaeger:4318"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://alloy:4318"
   OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"

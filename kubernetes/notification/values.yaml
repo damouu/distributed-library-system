@@ -16,7 +16,7 @@ config:
 
   otel:
     tracesExporter: "otlp"
-    endpoint: "http://jaeger:4318"
+    endpoint: "http://alloy:4318"
     protocol: "http/protobuf"
     logsExporter: "none"
     metricsExporter: "none"
