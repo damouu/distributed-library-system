@@ -8,17 +8,6 @@ spec:
 
   rules:
 
-    - host: library.damou.dev
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: library-frontend
-                port:
-                  number: 80
-
     - host: api.damou.dev
       http:
         paths:
