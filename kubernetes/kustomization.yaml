@@ -11,5 +11,4 @@ resources:
   - membercard
   - comments
   - ingress
-  - jaeger
   - records
