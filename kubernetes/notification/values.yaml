@@ -1,6 +1,6 @@
 image:
   repository: damou/library-app-notification
-  tag: 5515b8dd7acbd8a21ebadefa32db16d620b7f17d
+  tag: a52b366e1276cc23500037605df22a72d42f318d
   pullPolicy: IfNotPresent
 
 config:
