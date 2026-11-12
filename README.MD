@@ -52,7 +52,7 @@
 
 The following diagram illustrates the overall system architecture, including bounded contexts, asynchronous event flows, external managed services, and the Kubernetes deployment topology.
 
-![Distributed System Architecture](docs/images/distributed-system-architecture-v2.png)
+![Distributed System Architecture](docs/images/distributed-system-architecture-v3.png)
 
 ---
 
