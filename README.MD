@@ -281,7 +281,7 @@ Kubernetes, managed databases, centralized observability, and domain-driven even
 
 ## 🏛️ ☸️ Kubernetes Cluster Architecture
 
-![Kubernetes Cluster Architecture](docs/images/minikube-cluster-architecture.png)
+![Kubernetes Cluster Architecture](docs/images/cloud_native_library_platform_architecture.png)
 
 Version 2 migrates from a Docker Compose deployment to a cloud-native Kubernetes architecture designed for horizontal scalability and operational resilience.
 
